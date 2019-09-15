@@ -1,48 +1,22 @@
 #pragma once
 #include<iostream>
+#include<cmath>
 
 class generator{
+protected: 
+	double ans = 0;
 public:
-	class lgenerator {
-	private:
-		int m = (1 << 31) - 1;;
-		int x;
-	public:
-		double getDouble();
-	};
-	class rgenerator {
-	
-	};
+	virtual void generate() = 0;
+	virtual double getAns();
 };
 
-class LCG : public generator::lgenerator {
+class lgenerator : public generator {
 private:
-	int a = 101427;
-	int c = 321;
+	const int x1 = 12334545;
+	const int m1 = 1000000007;
 public:
-	void generate();
-};
-
-class QCG : public generator::lgenerator {
-private:
-	int a = 101427;
-	int c = 321;
-public:
-	void generate();
-};
-
-class FG : public generator::lgenerator {
-private:
-	int a = 101427;
-	int c = 321;
-public:
-	void generate();
-};
-
-class ICG : public generator::lgenerator {
-private:
-	int a = 101427;
-	int c = 321;
-public:
-	void generate();
+	int m;
+	int x;
+	double getAns() override;
+	lgenerator();
 };
