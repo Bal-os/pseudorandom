@@ -107,7 +107,7 @@ void PolarGen::generate(){
 
 CorrGen::CorrGen() {
 	g1 = new ICG(a, b);
-	g2 = new FG(1, 1, 1);
+	g2 = new FG(1, 1, 2);
 }
 
 double CorrGen::findX(){
@@ -137,7 +137,7 @@ void CorrGen::generate(){
 
 void LogGen::generate(){
 	g->generate();
-	ans = -log(g->getAns());
+	ans = -a*log(g->getAns());
 }
 
 void ArensGen::FindXnY()

@@ -53,6 +53,7 @@ public:
 
 class OneGen : public generator {
 protected:
+	const int a = 50;
 	generator* g = new UnionGen;
 public:
 	OneGen() = default;
@@ -107,7 +108,6 @@ private:
 	double u;
 	double v;
 	void FindXnY();
-	const int a = 50;
 	const double pi = acos(-1);
 public:
 	ArensGen() = default;
