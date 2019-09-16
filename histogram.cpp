@@ -8,6 +8,7 @@ std::string buildGistagram(double *arr,int size,int type) {
 	gist << "\nInterval\tChastota\n";
 
 	double ch[10];
+	double sum = 0.0;
 	for (int i = 0; i < 10; ++i)ch[i] = 0;
 
 	if (type <= 5)
@@ -26,7 +27,8 @@ std::string buildGistagram(double *arr,int size,int type) {
 				gist << "0." << i + 1 << "]";
 			else 
 				gist << "1.0]";
-			gist << "\t" << ch[i] / size << "\n";
+			sum += double(ch[i]) / size;
+			gist << "\t" << double(ch[i]) / size << "\n";
 		}
 	}
 	else if (type <= 8)
@@ -49,7 +51,8 @@ std::string buildGistagram(double *arr,int size,int type) {
 				else
 					gist << "3.0]";
 				gist.precision(3);
-				gist << "\t" << ch[i] / size << "\n";
+				sum += double(ch[i]) / size;
+				gist << "\t" << double(ch[i]) / size << "\n";
 			}
 		}
 	else if(type == 9)
@@ -58,11 +61,11 @@ std::string buildGistagram(double *arr,int size,int type) {
 					double x = double(*(arr + i));
 					ch[int(x)]++;
 				}
-				for (int i = 0; i < 6; ++i) {
+				for (int i = 0; i < 10; ++i) {
 					gist << "[" << i << "; ";
 
 					gist << (i + 1) << "]";
-
+					sum += double(ch[i]) / size;
 					gist << "\t" << double(ch[i]) / size << "\n";
 				}
 			}
@@ -70,15 +73,17 @@ std::string buildGistagram(double *arr,int size,int type) {
 	{
 		for (int i = 0; i < size; ++i) {
 			double x = double(*(arr + i));
-			ch[int(x/10)]++;
+			if(x >= 0)
+				ch[int(x/10)]++;
 		}
 		for (int i = 0; i < 10; ++i) {
 			gist << "[" << i * 10 << "; " ;
 
 			gist << (i + 1) * 10 << "]";
-
+			sum += double(ch[i]) / size;
 			gist << "\t" << double(ch[i]) / size << "\n";
 		}
 	}
+	gist << "suma:\t" << sum << "\n";
 	return gist.str();
 }

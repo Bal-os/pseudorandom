@@ -1,5 +1,4 @@
 #include <iostream>
-#include"generator.h"
 #include"generators.h"
 #include"histogram.h"
 using namespace std;

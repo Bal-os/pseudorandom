@@ -144,19 +144,17 @@ void ArensGen::FindXnY()
 {
 	g->generate();
 	u = g->getAns();
-	g->generate();
-	v = g->getAns();
 	y = tan(pi * u);
 	x = sqrt(2 * a - 1) * y + a - 1;
 }
 
 void ArensGen::generate(){
-	bool a = 0;
-	bool b = 0;
 	do {
-		FindXnY();
-		a = (x <= 0);
-		b = (v > (1 + y * y) * exp((a - 1) * log(x / (a - 1)) - sqrt(2 * a - 1) * y));
-	} while (a && b);
-		ans = fabs(x);
+		do {
+			FindXnY();
+		} while (x <= 0);
+		g->generate();
+		v = g->getAns();
+	} while (v > (1 + y * y)* exp((a - 1)* log(x / (a - 1)) - sqrt(2 * a - 1) * y));
+		ans = x;
 }

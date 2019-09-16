@@ -107,7 +107,7 @@ private:
 	double u;
 	double v;
 	void FindXnY();
-	const int a = 10;
+	const int a = 50;
 	const double pi = acos(-1);
 public:
 	ArensGen() = default;
